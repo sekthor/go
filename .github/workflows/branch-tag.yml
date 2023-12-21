@@ -2,22 +2,19 @@ name: Branch Tag
 # run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: "Target Branch"
-        required: true
-        default: "main"
+
 jobs:
   tag-branch-name:
     name: tag branch name
     runs-on: ubuntu-latest
     steps:
-      - name: checkout \"${{ github.ref_name }}\"
+      - name: checkout "${{ github.ref_name }}"
         uses: actions/checkout@v4
 
       - name: create tag
         uses: actions/github-script@v5
         with:
+          github-token: ${{ secrets.REPO_TOKEN }}
           script: |
             github.rest.git.createRef({
               owner: context.repo.owner,
