@@ -9,9 +9,19 @@ on:
         default: "main"
 jobs:
   tag-branch-name:
+    name: tag branch name
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout \"${{ github.ref_name }}\"
+        uses: actions/checkout@v4
+
+      - name: create tag
+        uses: actions/github-script@v5
         with:
-          ref: ${{ github.event.inputs.branch }}
-      - run: git tag -f ${{ github.event.inputs.branch }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ github.ref_name }}",
+              sha: context.sha
+            })
