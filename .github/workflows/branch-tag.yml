@@ -10,9 +10,21 @@ jobs:
     steps:
       - name: checkout "${{ github.ref_name }}"
         uses: actions/checkout@v4
+      
+      
+      - name: delete existing tag
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.REPO_TOKEN }}
+          script: |
+            github.rest.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ github.ref_name }}",
+            })
 
       - name: create tag
-        uses: actions/github-script@v5
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.REPO_TOKEN }}
           script: |
