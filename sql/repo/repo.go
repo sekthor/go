@@ -15,6 +15,7 @@ type Repo interface {
 	Connect() error
 	Ping() error
 	Migrate() error
+	CreateUser(User) (User, error)
 }
 
 func NewRepository(conf Config) (Repo, error) {

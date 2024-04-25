@@ -27,3 +27,16 @@ func (r *mysqlRepo) Ping() error {
 func (r *mysqlRepo) Migrate() error {
 	return nil
 }
+
+func (r *mysqlRepo) CreateUser(user User) (User, error) {
+	_, err := r.db.Exec("INSERT INTO users (uuid, username, email) VALUES (?,?,?)", user.UUID, user.Username, user.Email)
+
+	if err != nil {
+		return user, err
+	}
+	return user, nil
+}
+
+func (r *mysqlRepo) GetById(id string) error {
+	return nil
+}

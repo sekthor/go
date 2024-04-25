@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/google/uuid"
 	"gopkg.in/yaml.v3"
 )
 
@@ -33,5 +34,16 @@ func main() {
 
 	if err = repo.Ping(); err != nil {
 		log.Fatalf("could not ping db: %s", err.Error())
+	}
+
+	user := User{
+		UUID:     uuid.New(),
+		Username: "sekthor",
+		Email:    "sekthor@protonmail.ch",
+	}
+
+	user, err = repo.CreateUser(user)
+	if err != nil {
+		log.Fatalf("could not create user: %s", err.Error())
 	}
 }
