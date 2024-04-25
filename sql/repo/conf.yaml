@@ -1,0 +1,8 @@
+dbType: mysql
+mysql:
+  user: go
+  passwd: 1234
+  net: tcp
+  addr: localhost
+  dbname: go
+  allownativepasswords: true
