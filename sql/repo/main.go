@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -46,4 +47,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("could not create user: %s", err.Error())
 	}
+
+	user, err = repo.GetById(user.UUID.String())
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+
+	fmt.Println(user)
 }

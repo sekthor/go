@@ -37,6 +37,13 @@ func (r *mysqlRepo) CreateUser(user User) (User, error) {
 	return user, nil
 }
 
-func (r *mysqlRepo) GetById(id string) error {
-	return nil
+func (r *mysqlRepo) GetById(id string) (User, error) {
+	var user User
+	err := r.db.
+		QueryRow("SELECT uuid, username, email FROM users WHERE uuid = ?", id).
+		Scan(&user.UUID, &user.Username, &user.Email)
+	if err != nil {
+		return user, err
+	}
+	return user, nil
 }
