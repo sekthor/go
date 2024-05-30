@@ -1,0 +1,16 @@
+syntax = "proto3";
+package pb;
+
+option go_package = "./pb";
+
+service Greeter {
+    rpc GreetUser (User) returns (Greeting) {}
+}
+
+message User {
+    string name = 1;
+}
+
+message Greeting {
+    string msg = 1;
+}
