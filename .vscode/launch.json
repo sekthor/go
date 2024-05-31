@@ -54,6 +54,26 @@
             "env": {
                 "PORT": "5001"
             }
+        },
+        {
+            "name": "grpc/auth/server",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/grpc/auth/server",
+            "env": {
+                "PORT": "5001"
+            }
+        },
+        {
+            "name": "grpc/auth/client",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/grpc/auth/client",
+            "env": {
+                "PORT": "5001"
+            }
         }
     ]
 }
