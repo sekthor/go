@@ -56,23 +56,25 @@
             }
         },
         {
-            "name": "grpc/auth/server",
+            "name": "grpc/interceptor/server",
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/grpc/auth/server",
+            "program": "${workspaceFolder}/grpc/interceptor/server",
             "env": {
-                "PORT": "5001"
+                "PORT": "5001",
+                "CERT_PATH": ".."
             }
         },
         {
-            "name": "grpc/auth/client",
+            "name": "grpc/interceptor/client",
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/grpc/auth/client",
+            "program": "${workspaceFolder}/grpc/interceptor/client",
             "env": {
-                "PORT": "5001"
+                "PORT": "5001",
+                "CERT_PATH": ".."
             }
         }
     ]

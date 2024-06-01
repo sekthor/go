@@ -1,2 +1,4 @@
 persistance/sql/data
 persistance/neo4j/neo4j_db
+
+grpc/**/*.pem
